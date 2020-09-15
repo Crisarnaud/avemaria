@@ -1,0 +1,206 @@
+{% extends "avemaria/layout.html" %}
+
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">-->
+<!--<style>-->
+<!--    article:hover{-->
+<!--        box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.3);-->
+<!--    }-->
+<!--    article .title a:hover {-->
+<!--    text-decoration: underline;-->
+<!--}-->
+<!--</style>-->
+
+    {% block body %}
+
+<!--    <br>-->
+<!--    <br>-->
+<!--    <div class="container" style="font-size: 15px;">-->
+<!--        <div class="row">-->
+<!--        <div class="col-12 col-md-8">-->
+<!--            {% if user.is_authenticated %}-->
+
+<!--        <script> alert("Welcome, {{ user.username }}. Thanks for logging in.") </script>-->
+<!--{% else %}-->
+<!--    <p>Welcome, new user. Please log in.</p>-->
+<!--{% endif %}-->
+<!--                 {% for book in books %}-->
+<!--<div class="container">-->
+<!--        <div class="row">-->
+<!--        <div style="text-align: center;" class="col-12 col-md-8">-->
+
+<!--    <article style="background-color: #fff; border: 1px solid #c5c5c5;box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.3); position: relative; display: grid;position: relative;margin-bottom: 2em;">-->
+<!--      <p>-->
+<!--&lt;!&ndash;          <p style="text-align: center;float: right;">&ndash;&gt;-->
+<!--          <a href="/avemaria/book/{{book.id}}">-->
+<!--                <h3>{{ book.id }}: {{ book.title }}</h3>-->
+<!--          </a>-->
+<!--          <span style="align:left; width: 150px; height: 100%; float:left;">-->
+<!--                    {% if book.thumb %}-->
+<!--            <img src="{{book.thumb.url}}" class="img-responsive thumbnail " alt="img" style="height: auto; box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1); padding: 10px;">-->
+<!--                    {% endif %}-->
+<!--        </span>-->
+
+<!--&lt;!&ndash;            </p>&ndash;&gt;-->
+<!--                <p class="content"> {{book.contain|truncatewords:4}} </p><br>-->
+<!--                <p class="time">-->
+<!--                    <time datetime="{{ book.created_at|date:'Y-m-d'}}">-->
+<!--                        Publié le {{ book.created_at }}.-->
+<!--                    </time>-->
+<!--                </p>-->
+<!--        </p>-->
+<!--    </article>-->
+<!--            <br>-->
+<!--        </div>-->
+<!--        </div>-->
+<!--</div>-->
+<!--        {% endfor %}-->
+<!--        </div>-->
+<!--        <div class="col col-md-4" align="right">-->
+<!--            <form>-->
+<!--                <input name="search" type="text">-->
+<!--                <input type="submit">-->
+<!--            </form>-->
+<!--        </div>-->
+
+
+<style>
+	body {
+    padding: 20px;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f7f7f7;
+}
+
+form{
+    width: 100%;
+}
+
+.lib-panel {
+    margin-bottom: 20Px;
+}
+.lib-panel img {
+    width: 100%;
+    background-color: transparent;
+}
+
+.lib-panel .row,
+.lib-panel .col-md-6 {
+    padding: 0;
+    background-color: #FFFFFF;
+}
+
+
+.lib-panel .lib-row {
+    padding: 0 20px 0 20px;
+}
+
+.lib-panel .lib-row.lib-header {
+    background-color: #FFFFFF;
+    font-size: 20px;
+    padding: 10px 20px 0 20px;
+}
+
+.lib-panel .lib-row.lib-header .lib-header-seperator {
+    height: 2px;
+    width: 26px;
+    background-color: #d9d9d9;
+    margin: 7px 0 7px 0;
+}
+
+.lib-panel .lib-row.lib-desc {
+    position: relative;
+    height: 100%;
+    display: block;
+    font-size: 13px;
+}
+.lib-panel .lib-row.lib-desc a{
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+    left: 20px;
+}
+
+.row-margin-bottom {
+    margin-bottom: 20px;
+}
+
+.box-shadow {
+    -webkit-box-shadow: 0 0 10px 0 rgba(0,0,0,.10);
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.10);
+}
+
+.no-padding {
+    padding: 0;
+}
+
+</style>
+
+<div>
+{% include "layouts/nav.html" %}
+</div>
+<br>
+<br>
+<br>
+<br>
+
+<div class="container">
+	<div class="row">
+        <div class="container">
+            <div class="col-md-6">
+	<div class="row" style="align:center; size: A3;">
+        <form class="form-inline" method="get">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+	</div>
+            </div>
+</div>
+	</div>
+    <hr>
+                {% for book in books %}
+            <div class="col-md-1"></div>
+            <div class="col-md-5 no-padding lib-item" data-category="ui">
+                <div class="lib-panel">
+                    <div class="row box-shadow">
+                        <div class="col-md-6">
+                            {% if book.thumb %}
+							<img src="{{book.thumb.url}}" class="img-responsive thumbnail " alt="img" style="height: auto; width: 75%; box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1); padding: 10px;">
+                   			 {% endif %}
+                        </div>
+                        <div class="col-md-6">
+                            <div class="lib-row lib-header">
+								<a href="/avemaria/book/{{book.id}}">
+                                	<h3>{{ book.id }}: {{ book.title }}</h3>
+								</a>
+                                <div class="lib-header-seperator"></div>
+                            </div>
+                            <div class="lib-row lib-desc">
+								<p class="content"> {{book.contain|truncatewords:4}} </p><br>
+                				<p class="time">
+                    				<time datetime="{{ book.created_at|date:'Y-m-d'}}">
+                        				Publié le {{ book.created_at }}.
+                    				</time>
+                				</p>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                {% endfor %}
+        </div>
+</div>
+
+    </div>
+            <h4 style="color: #0d0d0d; text-align: center;">  ({{ books|length }} livres.) </h4>
+
+    </div>
+
+{% include "layouts/footer.html" %}
+    {% endblock %}
+
+

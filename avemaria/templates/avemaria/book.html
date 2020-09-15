@@ -1,0 +1,87 @@
+{% extends "avemaria/layout.html" %}
+{% load static %}
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+{% block title %} Book | {{books.title}} {% endblock %}
+<!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
+<!--<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>-->
+<!--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+
+<!--<head>-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />-->
+<!--</head>-->
+
+{% block body %}
+<style>
+article {
+    background-color: #fff;
+    border: 1px solid #c5c5c5;
+    margin-bottom: 2em;
+    padding: 1em;
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.3);
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+}
+
+article:hover {
+    box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.3);
+}
+article .title {
+    margin-bottom: 0.5em;
+}
+
+article .title a {
+    color: #1ce;
+    text-decoration: none;
+}
+
+article .time{
+    font-style: italic;
+    color: #c5c5c5;
+}
+
+article .title a:hover {
+    text-decoration: underline;
+}
+article .content{
+    padding: 0.5em 0;
+}
+</style>
+
+{% include "layouts/nav.html" %}
+
+    <article>
+        <h1 class="title"> <a href="{% url 'pdf_viewer' %}">{{books.id}} - {{books.title}}</a></h1>
+            <span style="align:left; width: 50%; height: auto; ">
+                            {% if books.thumb %}
+                <img src="{{books.thumb.url}}" class="img-responsive thumbnail " alt="img" style="height: auto; box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1); padding: 10px;">
+                            {% endif %}
+            </span>
+        <br>
+
+        <p class="content">{{books.contain}}</p>
+    </article>
+
+{% include "layouts/footer.html" %}
+
+
+
+
+<!------ Include the above in your HEAD tag ---------->
+
+
+
+
+
+
+
+
+{% endblock %}
+

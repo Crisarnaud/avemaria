@@ -1,0 +1,21 @@
+{% extends "avemaria/layout.html" %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+
+{% block body %}
+        {% include "layouts/nav.html" %}
+<br>
+<br>
+<div style="text-align: center; font-size: 15px;">
+       <h1>S'enregistrer</h1>
+       <form id="user_form" method="post" action="" enctype="multipart/form-data">
+              {% csrf_token %}
+
+              {{ user_form.as_p }}
+              {{ profile_form.as_p }}
+
+              <input type="submit" value="Register"/>
+       </form>
+</div>
+       {% include "layouts/footer.html" %}
+{% endblock %}
