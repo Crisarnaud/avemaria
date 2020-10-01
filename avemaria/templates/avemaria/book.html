@@ -58,7 +58,7 @@ article .content{
 {% include "layouts/nav.html" %}
 
     <article>
-        <h1 class="title"> <a href="{% url 'pdf_viewer' %}">{{books.id}} - {{books.title}}</a></h1>
+        <h1 class="title">{{books.id}} - {{books.title}}</h1>
             <span style="align:left; width: 50%; height: auto; ">
                             {% if books.thumb %}
                 <img src="{{books.thumb.url}}" class="img-responsive thumbnail " alt="img" style="height: auto; box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1); padding: 10px;">
@@ -67,6 +67,7 @@ article .content{
         <br>
 
         <p class="content">{{books.contain}}</p>
+        <a href="{{books.pdf.url}}" class="btn btn-primary btn-sm">Lire</a>
     </article>
 
 {% include "layouts/footer.html" %}

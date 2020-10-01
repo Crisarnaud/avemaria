@@ -17,6 +17,8 @@ from django.http import FileResponse, Http404
 
 from datetime import datetime
 
+import pdfkit
+
 # Create your views here.
 def index(request):
     books = Book.objects.all()
@@ -111,11 +113,34 @@ def passwd_forgot(request):
 def user_profile(request):
     return render(request, 'avemaria/user_profile.html')
 
-def pdf_viewer(request):
-    pdf = Book.pdf
+@login_required
+def invoicepdf(request, d):
+    if path.exists('media/profile_pics/%s.pdf'%d)==True:
+        return HttpResponseRedirect('media/profile_pics/%s.pdf'%d)
+    else:
+        inv=cart.objects.filter(Q(ordeno=d)&Q(user=request.user))
+        if inv:
+            cookie_list = request.COOKIES
+            options = {
+                'cookie': [
+                    ('csrftoken', cookie_list['csrftoken']),
+                    ('sessionid', cookie_list['sessionid']),
+                ],
+                'page-size':'A4',
+                'margin-top': '0',
+                'margin-right': '0',
+                'margin-bottom': '0',
+                'margin-left': '0',
+                'encoding': 'UTF-16',
+            }
+            config = pdfkit.configuration(wkhtmltopdf='C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe')
+            pdfkit.from_url(request.get_host()+'%s'%d, 'media/profile_pics/%s.pdf'%d, configuration=config, options=options)
+            return HttpResponseRedirect('media/profile_pics/%s.pdf'%d)
 
-    return render(request, 'avemaria/lecture.html', {pdf:pdf})
 
+# def pdf_viewer(request):
+#     return render(request, 'avemaria/lecture.html')
+#
 
 #     obj = get_object_or_404(PDF, pk=id)
 #
