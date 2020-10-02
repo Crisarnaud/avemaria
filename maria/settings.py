@@ -129,7 +129,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, '/maria/avemaria/static'),
+    os.path.join(BASE_DIR, 'avemaria/static'),
 )
 
 STATIC_URL = '/static/'
