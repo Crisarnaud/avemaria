@@ -129,11 +129,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, '/avemaria/static'),
+    os.path.join(BASE_DIR, '/maria/avemaria/static'),
 )
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/profile_pics/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'maria/media/profile_pics')
 LOGIN_URL = '/avemaria/login/'
